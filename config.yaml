@@ -1,0 +1,29 @@
+#### Azure Registry Address
+registry:
+  address: "https://myacrregistry.azurecr.io"
+
+#### This will tell us to keep or delete images
+dry_run: true
+
+#### What we will do with images without a matching group.
+delete_others: true
+
+#### Those are groups to sort tags. The Regex will match tags name and sort tags on groups, if dry_run is false, howManyToKeep will tell the number of latest images to keep.
+tagsGroups:
+  build:
+    regex: ".*build$"
+    howManyToKeep: 10      
+  dev:
+    regex: ".*dsv$"
+    howManyToKeep: 3    
+  hml:
+    regex: ".*hml$"
+    howManyToKeep: 3      
+  prd:
+    regex: ".*prd$"
+    howManyToKeep: 3     
+
+#### Simple list of repositories to clean.
+repository:
+  - "repository.name.my.app.1"
+  - "repostiroy.name.my.app.2"
